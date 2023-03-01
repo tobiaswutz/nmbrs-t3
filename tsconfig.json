@@ -16,10 +16,10 @@
     "jsx": "preserve",
     "incremental": true,
     "noUncheckedIndexedAccess": true,
-    "baseUrl": ".",
-    "paths": {
-      "/*": ["./src/*"]
-    }
+    "baseUrl": "."
+    // "paths": {
+    //   "/*": ["./src/*"]
+    // }
   },
   "include": [
     ".eslintrc.cjs",
