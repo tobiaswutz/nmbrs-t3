@@ -17,8 +17,7 @@ export default function Example() {
       <div
         className="flex h-screen min-h-full flex-col justify-center bg-cover bg-center py-12 sm:px-6 lg:px-8"
         style={{
-          backgroundImage:
-            "url('https://images.pexels.com/photos/696680/pexels-photo-696680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
+          backgroundImage: "url('/images/login-bg.jpg')",
         }}
       >
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -27,7 +26,7 @@ export default function Example() {
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
           />
-          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-200">
             Sign in to your account
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
