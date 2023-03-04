@@ -1,7 +1,18 @@
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useEffect } from "react";
+import { api } from "src/utils/api";
 
 export default function Example() {
   const { data: sessionData } = useSession();
+
+  const getData = async () => {
+    const response = await api.example.getSecretMessage;
+    console.log(response);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   if (sessionData) {
     return (
