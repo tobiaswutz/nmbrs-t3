@@ -1,27 +1,15 @@
 import { signIn, signOut, useSession } from "next-auth/react";
+import router from "next/router";
 import { useEffect } from "react";
-import { api } from "src/utils/api";
 
 export default function Example() {
   const { data: sessionData } = useSession();
 
-  const getData = async () => {
-    const response = await api.example.getSecretMessage;
-    console.log(response);
-  };
-
   useEffect(() => {
-    getData();
-  }, []);
-
-  if (sessionData) {
-    return (
-      <div>
-        <p>Session data: {JSON.stringify(sessionData)}</p>
-        <button onClick={() => signOut()}>Sign out</button>
-      </div>
-    );
-  }
+    if (sessionData) {
+      router.push("/app/dashboard");
+    }
+  }, [sessionData]);
 
   return (
     <>
@@ -34,17 +22,17 @@ export default function Example() {
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img
             className="mx-auto h-12 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+            src="https://tailwindui.com/img/logos/mark.svg?color=gray&shade=600"
             alt="Your Company"
           />
-          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-200">
+          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
             Sign in to your account
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{" "}
             <a
               href="#"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-medium text-gray-600 hover:text-gray-500"
             >
               start your 14-day free trial
             </a>
@@ -52,7 +40,7 @@ export default function Example() {
         </div>
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-          <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          <div className="bg-gray-500 py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" action="#" method="POST">
               <div>
                 <label
@@ -68,7 +56,7 @@ export default function Example() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -87,7 +75,7 @@ export default function Example() {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -98,7 +86,7 @@ export default function Example() {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-600"
                   />
                   <label
                     htmlFor="remember-me"
@@ -111,7 +99,7 @@ export default function Example() {
                 <div className="text-sm">
                   <a
                     href="#"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                    className="font-medium text-gray-600 hover:text-gray-500"
                   >
                     Forgot your password?
                   </a>
@@ -121,7 +109,7 @@ export default function Example() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center rounded-md bg-gray-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
                 >
                   Sign in
                 </button>
@@ -134,7 +122,7 @@ export default function Example() {
                   <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="bg-white px-2 text-gray-500">
+                  <span className="bg-gray-500 px-2 text-white">
                     Or continue with
                   </span>
                 </div>
