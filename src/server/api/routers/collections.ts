@@ -2,7 +2,18 @@ import { createTRPCRouter, publicProcedure, protectedProcedure } from "../trpc";
 
 export const collectionsRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
-    const collections = await ctx.prisma.collection.findMany();
+    const userId = ctx.session?.user?.id;
+    if (!userId) {
+      // Wenn keine Session-Daten vorhanden sind, werfen Sie einen Fehler
+      throw new Error("User not authenticated");
+    }
+
+    const collections = await ctx.prisma.collection.findMany({
+      where: {
+        userId,
+      },
+    });
+
     return collections;
   }),
 
