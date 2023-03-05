@@ -2,7 +2,6 @@ import { createTRPCRouter, publicProcedure, protectedProcedure } from "../trpc";
 
 export const collectionsRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
-    return "hello";
     const collections = await ctx.prisma.collection.findMany();
     return collections;
   }),

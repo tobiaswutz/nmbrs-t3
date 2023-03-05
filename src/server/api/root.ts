@@ -1,5 +1,6 @@
 import { collectionsRouter } from "./routers/collections";
 import { exampleRouter } from "./routers/example";
+import { tradesRouter } from "./routers/trades";
 import { createTRPCRouter } from "./trpc";
 
 /**
@@ -10,6 +11,7 @@ import { createTRPCRouter } from "./trpc";
 export const appRouter = createTRPCRouter({
   example: exampleRouter,
   collections: collectionsRouter,
+  trades: tradesRouter,
 });
 
 // export type definition of API

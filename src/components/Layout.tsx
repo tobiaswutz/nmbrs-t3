@@ -21,19 +21,14 @@ interface Props {
 
 const navigation = [
   { name: "Dashboard", href: "dashboard", icon: HomeIcon, current: true },
-  // { name: "Team", href: "#", icon: UsersIcon, current: false },
-  // { name: "Projects", href: "#", icon: FolderIcon, current: false },
-  // { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  // { name: "Documents", href: "#", icon: InboxIcon, current: false },
-  {
-    name: "Reports",
-    href: "reports",
-    icon: ChartBarIcon,
-    current: false,
-  },
+  { name: "Collections", href: "collections", icon: FolderIcon, current: true },
+  { name: "Reports", href: "reports", icon: ChartBarIcon, current: false },
 ];
 
 const userNavigation = [
+  { name: "Your Profile", href: "#" },
+  { name: "Settings", href: "#" },
+  { name: "Sign out", href: "#" },
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
   { name: "Sign out", href: "#" },
@@ -270,7 +265,7 @@ const DashboardLayout = ({ children }: Props) => {
                       ))}
                       <Menu.Item>
                         <button
-                          className="block px-4 py-2 text-sm text-gray-700"
+                          className="block bg-black px-4 py-2 text-sm text-gray-700"
                           onClick={() => signOut()}
                         >
                           ausloggen

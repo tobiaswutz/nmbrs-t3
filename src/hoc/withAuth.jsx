@@ -5,7 +5,7 @@ import Router from "next/router";
 const withAuth = (WrappedComponent) => {
   const Wrapper = (props) => {
     const { data: session, status } = useSession();
-    if (status === "loading") return <p>Loading...</p>;
+    if (status === "loading") return <p>Loading...</p>; // TW hier dann noch einen spinner oder skeleton einbauen
     if (!session) {
       Router.replace("/auth/login");
       return null;
