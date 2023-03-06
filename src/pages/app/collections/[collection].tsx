@@ -1,14 +1,24 @@
 import { Trade } from "@prisma/client";
 import { NextPage } from "next";
-import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Modal from "src/components/Modal";
 import { api } from "src/utils/api";
 
 const CollectionTable: NextPage = () => {
-  const data = api.trades.getAll.useQuery();
+  const router = useRouter();
+  const [id, setId] = useState<number | null>(null);
+  const { data, refetch  } = api.trades.getAllFromCollection.useQuery(
+    { collectionId: id ?? 0 },
+    { enabled: id !== null }
+  );
 
   useEffect(() => {
-    console.log(data?.data);
-  }, [data]);
+    if (router.query.collection) { setId(parseInt(router.query.collection as string)); }
+    console.log(router.query);
+    
+    refetch();
+  }, [router.query]);
 
   return (
     <>
@@ -48,7 +58,7 @@ const CollectionTable: NextPage = () => {
           </tr>
         </thead>
         <tbody>
-          {data?.data?.map((trade: Trade) => (
+          {data?.trades.map((trade: Trade) => (
             <tr key={trade.id} className="hover:bg-gray-100">
               <td className="border-b border-gray-200 px-4 py-2">{trade.id}</td>
               <td className="border-b border-gray-200 px-4 py-2">
@@ -82,6 +92,7 @@ const CollectionTable: NextPage = () => {
           ))}
         </tbody>
       </table>
+      <Modal />
     </>
   );
 };
