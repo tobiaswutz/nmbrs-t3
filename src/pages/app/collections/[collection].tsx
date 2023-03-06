@@ -13,6 +13,23 @@ const CollectionTable: NextPage = () => {
     { enabled: id !== null }
   );
 
+  const [formValues, setFormValues] = useState<any>({
+    id: 0,
+    timestamp: new Date(),
+    exchange: 'binance',
+    baseAsset: 'BTC',
+    quoteAsset: 'USDT',
+    action: 'buy',
+    amount: 1221,
+    price: 1221,
+    fee: 1221,
+    feeAsset: 'USDT',
+    notes: 'test',
+    userId: 1,
+  })
+
+  const [ open, setOpen ] = useState(false);
+
   useEffect(() => {
     if (router.query.collection) { setId(parseInt(router.query.collection as string)); }
     console.log(router.query);
@@ -22,6 +39,7 @@ const CollectionTable: NextPage = () => {
 
   return (
     <>
+      <button onClick={() => setOpen(true)}>Hallo</button>
       <table className="w-full table-fixed border-collapse">
         <thead>
           <tr>
@@ -92,7 +110,23 @@ const CollectionTable: NextPage = () => {
           ))}
         </tbody>
       </table>
-      <Modal />
+      <Modal open={open} setOpen={setOpen} >
+      <div>
+      <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+        LELLEK
+      </label>
+      <div className="mt-2">
+        <input
+          type="kek"
+          name="kek"
+          id="kek"
+          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          placeholder="BTC"
+        />
+      </div>
+    </div>
+
+      </Modal>
     </>
   );
 };
